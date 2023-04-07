@@ -1,0 +1,17 @@
+node{
+    stage('gitclone'){
+        git "https://github.com/Prolific-J/nodejs-application"
+    }
+    stage('codebuild'){
+        sh "npm install"
+    }
+    stage('codequality'){
+        sh "npm run sonar"
+    }
+    stage('upload2nexus'){
+        //sh "npm publish"
+    }
+    stage('deployapp'){
+        sh "npm start"
+    }
+}
